@@ -8,6 +8,24 @@ Rails.application.routes.draw do
   post "/users/", to: "users#create"
 
   get "/users/:id", to: "users#show"
+
+# I just added this route, the to: is not really where I want to redirect but it's a placeholder
+  get "/users/:id/libraries", to: "users#show"
+
+  get "/sign_in", to: "sessions#new"
+  # I changed the below from get to post
+  post "/sessions", to: "sessions#create"
+
+  get "/libraries", to: "libraries#index"
+
+  get "/libraries/new", to: "libraries#new", as: "new_library"
+
+  post "/libraries", to: "libraries#create"
+
+  get "/users/:user_id/libraries", to: "library_users#index", as: "library_users"
+
+  post "/libraries/:library_id/users", to: "library_users#create", as: "library_users"
+
 end
 
 
